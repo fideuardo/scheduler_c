@@ -2,7 +2,11 @@
 #include "schedulertp.h"
 #include "task1c1.h"
 #include "task2c1.h"
-#include <windows.h> // Required for Sleep() on Windows
+#if defined(_WIN32) || defined(_WIN64)
+#include <windows.h> // Para Sleep() en Windows
+#else
+#include <unistd.h>  // Para sleep() en Linux/Unix
+#endif
 
 const task_t tasks[] = {
     {task1_vInit, task1_vDeinit, task1_vCyclic100ms},
@@ -29,7 +33,7 @@ void scheduler_run(void) {
                 tasks[i].cyclic100ms();
             }
         }
-        Sleep(100); // Wait for 100ms
+        sleep(100); // Wait for 100ms
     }
 
     // Deinitialize all tasks before exiting (not reached in this infinite loop in this design)
@@ -38,4 +42,12 @@ void scheduler_run(void) {
             tasks[i].deinit();
         }
     }
+}
+
+void SleepTask(int ms) {
+#ifdef _WIN32
+    sleep(ms);
+#else
+    usleep(ms * 1000); // usleep usa microsegundos
+#endif
 }
