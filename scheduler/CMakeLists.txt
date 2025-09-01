@@ -1,17 +1,8 @@
-cmake_minimum_required(VERSION 3.10)
+# Define la biblioteca 'scheduler' a partir de sus archivos fuente
+add_library(scheduler core/scheduler.c)
 
-project(scheduler)
-
-add_library(scheduler STATIC
-    core/scheduler.c
-)
-
-target_link_libraries(scheduler PUBLIC Task1 Task2)
-
-target_include_directories(scheduler PUBLIC
-    core
-    ${CMAKE_SOURCE_DIR}/scheduler/Task1/core
-    ${CMAKE_SOURCE_DIR}/scheduler/Task1/adapt
-    ${CMAKE_SOURCE_DIR}/scheduler/Task2/core
-    ${CMAKE_SOURCE_DIR}/scheduler/Task2/adapt
-)
+# Especifica los directorios de inclusión para el objetivo 'scheduler'.
+# Al marcar el directorio 'core' como PUBLIC, cualquier objetivo que se enlace
+# contra esta biblioteca (como nuestro ejecutable principal) tendrá automáticamente
+# este directorio añadido a su ruta de inclusión.
+target_include_directories(scheduler PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/core)
