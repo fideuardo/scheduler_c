@@ -1,8 +1,11 @@
+#ifndef TASK2_CA
+#define TASK2_CA
+
 /***************************************/
 /*         Initialization Functions    */
 /***************************************/
 
-// Initialization function 1 for Task 1
+// Initialization function 1 for Task 2
 void task2_vinit1(void);
 
 // Initialization function 2 for Task 2
@@ -27,3 +30,5 @@ void task2_vcyclic100ms_1(void);
 
 // Cyclic function 2 for Task 2, called every 100ms
 void task2_vcyclic100ms_2(void);
+
+#endif /* TASK2_CA */
