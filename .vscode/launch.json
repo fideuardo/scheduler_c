@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug (gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            // El nombre del programa se infiere del nombre del proyecto raíz.
+            // Asegúrate de que coincida con el nombre de tu ejecutable en el CMakeLists.txt raíz.
+            "program": "${workspaceFolder}/build/scheduler_c",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            // Para una mejor experiencia, esta línea ejecuta la tarea "build" antes de depurar.
+            // Requiere el archivo tasks.json que te proporciono a continuación.
+            "preLaunchTask": "build"
+        }
+    ]
+}

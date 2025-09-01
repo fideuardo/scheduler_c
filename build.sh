@@ -8,7 +8,7 @@ SOURCE_DIR="${PROJECT_ROOT}"
 function cmake_build() {
     echo "--- Configuring CMake and Building Project ---"
     mkdir -p "${BUILD_DIR}"
-    cmake -S "${SOURCE_DIR}" -B "${BUILD_DIR}"
+    cmake -S "${SOURCE_DIR}" -B "${BUILD_DIR}" -DCMAKE_BUILD_TYPE=Debug
     if [ $? -ne 0 ]; then
         echo "CMake configuration failed."
         exit 1
