@@ -4,7 +4,6 @@ project(scheduler)
 
 add_library(scheduler STATIC
     core/scheduler.c
-    core/schedulertp.c
 )
 
 target_link_libraries(scheduler PUBLIC Task1 Task2)
